@@ -1,22 +1,18 @@
-import { useState } from "react"
+import { useContext } from "react";
 import ListItem from "./ListItem"
 import Container from "./shared/Container";
 import ListContainer from "./shared/ListContainer";
 import ClearBtn from './ClearBtn'
+import {AppContext} from "../context/Contex";
+
 
 function Form() {
-  const [listItem, setListItem] = useState([])
-  const [text, setText] = useState('')
-
-  const submitForm = e => {
-    e.preventDefault()
-    setListItem([text, ...listItem])
-    console.log(listItem)
-  }
-  const handleTextChange = e => {
-    setText(e.target.value)
-  }
-
+  const {
+    submitForm,
+    handleTextChange,
+    listItem,
+    text
+  } = useContext(AppContext)
   return (
     <>
     <form className="grocery-form" onSubmit={submitForm}>
@@ -28,7 +24,9 @@ function Form() {
     </form>
     <Container>
       <ListContainer>
-        <ListItem list={listItem}/>
+        {listItem.map((item, index) => 
+        <ListItem key={index} list={item}/>
+        )}
       </ListContainer>
       <ClearBtn/>
     </Container>
