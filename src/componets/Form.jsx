@@ -4,6 +4,7 @@ import Container from "./shared/Container";
 import ListContainer from "./shared/ListContainer";
 import ClearBtn from './ClearBtn'
 import {AppContext} from "../context/Contex";
+import Msg from "./Msg";
 
 
 function Form() {
@@ -11,7 +12,9 @@ function Form() {
     submitForm,
     handleTextChange,
     listItem,
-    text
+    text,
+    msg,
+    show
   } = useContext(AppContext)
   return (
     <>
@@ -23,14 +26,21 @@ function Form() {
         </div>
     </form>
     <Container>
+      <Msg msg={msg}/>
       <ListContainer>
         {listItem.map((item, index) => 
         <ListItem key={index} list={item}/>
         )}
       </ListContainer>
-      <ClearBtn/>
+      <ClearBtn show={show}/>
     </Container>
     </>
   )
 }
 export default Form
+
+//TODO:
+//1- validate input
+//2- fix clear items btn
+//3- fix delete, and edit btns
+//4- store listitems in localstorage

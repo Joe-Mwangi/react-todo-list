@@ -260,12 +260,8 @@ Grocery List
 }
 
 .grocery-container {
-  margin-top: 2rem;
+  margin-top: 1rem;
   transition: var(--transition);
-  /* visibility: hidden; */
-}
-.show-container {
-  visibility: visible;
 }
 .grocery-item {
   display: flex;
@@ -329,7 +325,18 @@ Grocery List
   cursor: pointer;
   transition: var(--transition);
   margin-top: 1.25rem;
+  visibility: hidden;
 }
 .clear-btn:hover {
   color: var(--clr-red-dark);
+}
+.show {
+  visibility: visible;
+}
+.msg{
+  font-size: .85rem;
+  letter-spacing: var(--spacing);
+  color: var(--clr-red-light);
+  text-align: center;
+  transition: var(--transition);
 }

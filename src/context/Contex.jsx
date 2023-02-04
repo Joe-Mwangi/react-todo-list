@@ -5,11 +5,19 @@ export const AppContext = createContext()
 function AppProvider({children}) {
   const [listItem, setListItem] = useState([])
   const [text, setText] = useState('')
+  const [msg, setMsg] = useState('')
+  const [show, setShow] = useState(false)
 
   const submitForm = e => {
     e.preventDefault()
-    setListItem([text, ...listItem])
-    console.log(listItem)
+    if(text === '') {
+      setMsg('Value cannot be empty')
+      setTimeout(() => setMsg(''), 2000)
+    } else {
+      setShow(true)
+      setListItem([text, ...listItem])
+      setMsg('')
+    }
   }
   const handleTextChange = e => {
     setText(e.target.value)
@@ -18,6 +26,8 @@ function AppProvider({children}) {
   return (
     <AppContext.Provider value={{
         text,
+        msg,
+        show,
         listItem,
         submitForm,
         handleTextChange,
