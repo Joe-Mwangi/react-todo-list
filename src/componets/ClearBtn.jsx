@@ -1,6 +1,13 @@
+import { useContext } from "react"
+import { AppContext } from "../context/Contex"
+
 function ClearBtn({show}) {
+  const {clearItems} = useContext(AppContext)
   return (
-    <button className={show ? "clear-btn show": "clear-btn"}>clear items</button>
+    <button 
+    className={show ? "clear-btn show": "clear-btn"}
+    onClick={clearItems}
+    >clear items</button>
   )
 }
 

@@ -8,7 +8,7 @@ function AppProvider({children}) {
   const [msg, setMsg] = useState('')
   const [show, setShow] = useState(false)
 
-  const submitForm = e => {
+  function submitForm(e) {
     e.preventDefault()
     if(text === '') {
       setMsg('Value cannot be empty')
@@ -20,8 +20,14 @@ function AppProvider({children}) {
       setText('')
     }
   }
-  const handleTextChange = e => {
+  function handleTextChange(e) {
     setText(e.target.value)
+  }
+
+  function clearItems() {
+    console.log('clicked')
+    setListItem([])
+    setShow(false)
   }
 
   return (
@@ -32,6 +38,7 @@ function AppProvider({children}) {
         listItem,
         submitForm,
         handleTextChange,
+        clearItems
     }}>
         {children}
     </AppContext.Provider>
