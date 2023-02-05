@@ -17,6 +17,7 @@ function AppProvider({children}) {
       setShow(true)
       setListItem([text, ...listItem])
       setMsg('')
+      setText('')
     }
   }
   const handleTextChange = e => {
