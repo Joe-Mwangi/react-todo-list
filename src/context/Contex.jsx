@@ -14,8 +14,12 @@ function AppProvider({children}) {
       setMsg('Value cannot be empty')
       setTimeout(() => setMsg(''), 2000)
     } else {
+      const item = {
+        text,
+        id: crypto.randomUUID()
+      }
       setShow(true)
-      setListItem([text, ...listItem])
+      setListItem([item, ...listItem])
       setMsg('')
       setText('')
     }
@@ -25,9 +29,16 @@ function AppProvider({children}) {
   }
 
   function clearItems() {
-    console.log('clicked')
     setListItem([])
     setShow(false)
+  }
+
+  function deleteItem(id) {
+    const newItems = listItem.filter(item => item.id !== id)
+    setListItem(newItems)
+    if(listItem.length === 1) {
+      setShow(false)
+    }
   }
 
   return (
@@ -38,7 +49,8 @@ function AppProvider({children}) {
         listItem,
         submitForm,
         handleTextChange,
-        clearItems
+        clearItems,
+        deleteItem
     }}>
         {children}
     </AppContext.Provider>
