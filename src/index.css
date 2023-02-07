@@ -333,10 +333,4 @@ Grocery List
 .show {
   visibility: visible;
 }
-.msg{
-  font-size: .85rem;
-  letter-spacing: var(--spacing);
-  color: var(--clr-red-light);
-  text-align: center;
-  transition: var(--transition);
-}
+

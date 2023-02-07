@@ -14,19 +14,19 @@ function Form() {
     listItem,
     text,
     msg,
-    show
+    show,
+    success
   } = useContext(AppContext)
   return (
     <>
     <form className="grocery-form" onSubmit={submitForm}>
-        <p className="alert"></p>
+        <Msg msg={msg} success={success}/>
         <div className="form-control">
           <input type="text" id="grocery" value={text} onChange={handleTextChange} placeholder="e.g. eggs" />
           <button type="submit" className="submit-btn">add</button>
         </div>
     </form>
     <Container>
-      <Msg msg={msg}/>
       <ListContainer>
         {listItem.map((item, index) => 
         <ListItem key={index} list={item}/>

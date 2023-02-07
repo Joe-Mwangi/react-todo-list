@@ -1,7 +1,12 @@
 
-function Msg({msg}) {
+function Msg({msg, success}) {
   return (
-    <p className="msg">{msg}</p>
+    <p className={
+      success === 'empty' ? "alert" :
+      success === 'danger' ? "alert alert-danger":
+      "alert  alert-success"
+    }
+      >{msg}</p>
   )
 }
 export default Msg
