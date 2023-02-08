@@ -4,6 +4,7 @@ function Msg({msg, success}) {
     <p className={
       success === 'empty' ? "alert" :
       success === 'danger' ? "alert alert-danger":
+      success === 'edit' ? "alert alert-edit" :
       "alert  alert-success"
     }
       >{msg}</p>

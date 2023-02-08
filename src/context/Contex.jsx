@@ -8,20 +8,29 @@ function AppProvider({children}) {
   const [msg, setMsg] = useState('')
   const [success, setSuccess] = useState('empty')
   const [show, setShow] = useState(false)
+  const [edit, setEdit] = useState(false)
+  const [editId, setEditId] = useState('')
+  const [btn, setBtn] = useState('add')
 
   function submitForm(e) {
     e.preventDefault()
     if(text === '') {
       alertMsgFunc('danger', 'Value cannot be empty')
     } else {
-      const item = {
-        text,
-        id: crypto.randomUUID()
+      if(!edit) {
+        const item = {
+          text,
+          id: crypto.randomUUID()
+        }
+        setShow(true)
+        setListItem([item, ...listItem])
+        alertMsgFunc('success', 'Item created successfully')
+        setText('')
       }
-      setShow(true)
-      setListItem([item, ...listItem])
-      alertMsgFunc('success', 'Item created successfully')
+      Object.assign(editId, { text })
+      setEdit(false)
       setText('')
+      setBtn('add')
     }
   }
   function handleTextChange(e) {
@@ -52,17 +61,28 @@ function AppProvider({children}) {
     }, 2000)
   }
 
+  function editItem(id) {
+    const editText = listItem.find(item => item.id === id)
+    setEdit(true)
+    setText(editText.text)
+    setEditId(editText)
+    setBtn('edit')
+    alertMsgFunc('edit', 'Edit mode')
+  }
+
   return (
     <AppContext.Provider value={{
         text,
         msg,
         show,
+        btn,
         success,
         listItem,
         submitForm,
         handleTextChange,
         clearItems,
-        deleteItem
+        deleteItem,
+        editItem
     }}>
         {children}
     </AppContext.Provider>

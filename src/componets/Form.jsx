@@ -15,7 +15,8 @@ function Form() {
     text,
     msg,
     show,
-    success
+    success,
+    btn
   } = useContext(AppContext)
   return (
     <>
@@ -23,7 +24,7 @@ function Form() {
         <Msg msg={msg} success={success}/>
         <div className="form-control">
           <input type="text" id="grocery" value={text} onChange={handleTextChange} placeholder="e.g. eggs" />
-          <button type="submit" className="submit-btn">add</button>
+          <button type="submit" className="submit-btn">{btn}</button>
         </div>
     </form>
     <Container>

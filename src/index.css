@@ -214,6 +214,10 @@ Grocery List
   color: #155724;
   background: #d4edda;
 }
+.alert-edit {
+  color: #057378;
+  background: #e8eeee;
+}
 .grocery-form h3 {
   color: var(--clr-primary-1);
   margin-bottom: 1.5rem;
