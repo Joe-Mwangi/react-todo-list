@@ -67,7 +67,7 @@ function AppProvider({children}) {
     setText(editText.text)
     setEditId(editText)
     setBtn('edit')
-    alertMsgFunc('edit', 'Edit mode')
+    alertMsgFunc('edit', 'You are in edit mode')
   }
 
   return (
