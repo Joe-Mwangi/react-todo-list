@@ -16,6 +16,9 @@ function AppProvider({children}) {
   useEffect(() => {
     function getFromLocalstorage() {
       setListItem(localStorageItems())
+      if(localStorageItems().length > 0) {
+        setShow(true)
+      }
     }
     getFromLocalstorage()
   }, [])
@@ -51,6 +54,7 @@ function AppProvider({children}) {
     setListItem([])
     setShow(false)
     alertMsgFunc('danger', 'Items have been deleted')
+    localStorage.removeItem('item')
   }
 
   function deleteItem(id) {
@@ -92,14 +96,23 @@ function AppProvider({children}) {
   }
 
   function editFromLocalstorage(id, text) {
-    const newItem = localStorageItems().find(item => item.id === id)
-    Object.assign(newItem, {text})
-    const newItems = localStorageItems().filter(item => item.id !== id)
-    localStorage.setItem('item', JSON.stringify([newItem,...newItems]))
+    // const newItem = localStorageItems().find(item => item.id === id)
+    // Object.assign(newItem, {text})
+    // const newItems = localStorageItems().filter(item => item.id !== id)
+    // localStorage.setItem('item', JSON.stringify([newItem,...newItems]))
+
+    let items = localStorageItems()
+    items = items.map(item => {
+      if(item.id === id) {
+        item.text = text
+      }
+      return item
+    })
+    localStorage.setItem('item', JSON.stringify(items))
   } 
 
   function localStorageItems() {
-    return JSON.parse(localStorage.getItem('item'))
+    return localStorage.getItem('item') ? JSON.parse(localStorage.getItem('item')) : []
   }
 
   return (
