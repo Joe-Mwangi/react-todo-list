@@ -101,8 +101,7 @@ function AppProvider({children}) {
     // const newItems = localStorageItems().filter(item => item.id !== id)
     // localStorage.setItem('item', JSON.stringify([newItem,...newItems]))
 
-    let items = localStorageItems()
-    items = items.map(item => {
+    const items = localStorageItems().map(item => {
       if(item.id === id) {
         item.text = text
       }
