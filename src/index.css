@@ -142,6 +142,10 @@ p {
   justify-content: center;
   margin: 1rem 0;
 }
+.btn-container{
+  display: flex;
+  gap: .75rem;
+}
 .btn {
   text-transform: uppercase;
   background: transparent;
