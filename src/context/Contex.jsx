@@ -76,14 +76,13 @@ function AppProvider({children}) {
     }, 2000)
   }
 
-  function editItem(id) {
-    const editText = listItem.find(item => item.id === id)
+  function editItem(updateItem) {
     setEdit(true)
-    setText(editText.text)
-    setItemEdit(editText)
+    setText(updateItem.text)
+    setItemEdit(updateItem)
     setBtn('edit')
     alertMsgFunc('edit', 'You are in edit mode')
-    setLsItemId(id)
+    setLsItemId(updateItem.id)
   }
 
   function saveToLocalstorage(item) {

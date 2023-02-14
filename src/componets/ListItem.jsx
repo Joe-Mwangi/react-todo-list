@@ -8,7 +8,7 @@ function ListItem({list}) {
     <div className="grocery-item">
         <p className="title">{list.text}</p>
         <div className="btn-container">
-        <button className="edit-btn" onClick={() => editItem(list.id)}>edit</button>
+        <button className="edit-btn" onClick={() => editItem(list)}>edsit</button>
         <button className="delete-btn" onClick={() => deleteItem(list.id)}>delete</button>
         </div>
     </div>
